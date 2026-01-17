@@ -1,4 +1,4 @@
-# 🧮 CalCulus
+# 🧮 CalCulus v0.2.0
 
 **A high-performance C++ calculus and mathematics engine for Python, built with pybind11.**
 
