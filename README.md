@@ -178,6 +178,120 @@ Represents a single numeric value.
 | `e` | Euler’s number |
 | `g` | Gravity |
 
+## Ultimate Test Code
+```python
+import calculus as c
+
+print("===== CalCulus Library Test =====\n")
+
+# ---------------- Scalar Tests ----------------
+print("-> Testing Scalar class")
+a = c.Scalar(5)
+b = c.Scalar(3)
+
+print("a =", a.value)
+print("b =", b.value)
+print("Addition: a + b =", (a + b).value)
+print("Subtraction: a - b =", (a - b).value)
+print("Multiplication: a * b =", (a * b).value)
+print("Division: a / b =", (a / b).value)
+
+print("Trigonometric: sin(a) =", a.sin())
+print("Trigonometric: cos(a) =", a.cos())
+print("Trigonometric: tan(a) =", a.tan())
+print("Inverse trig: asin(0.5) =", c.asin(0.5))
+print("Inverse trig: acos(0.5) =", c.acos(0.5))
+print("Inverse trig: atan(1) =", c.atan(1))
+print("Hyperbolic: sinh(a) =", a.sinh())
+print("Hyperbolic: cosh(a) =", a.cosh())
+print("Hyperbolic: tanh(a) =", a.tanh())
+print("Exponential: exp(a) =", a.exp())
+print("Logarithm: log(a) =", a.log())
+print("Log base 10: log10(a) =", a.log10())
+print("Square root: sqrt(a) =", a.sqrt())
+print("Cube root: cbrt(a) =", a.cbrt())
+print("Absolute: abs(-a) =", c.abs(-5))
+print("Power: a^3 =", c.pow(a, 3))
+print()
+
+# ---------------- Vec3 Tests ----------------
+print("-> Testing Vec3 class")
+v1 = c.Vec3(1, 2, 3)
+v2 = c.Vec3(4, 5, 6)
+
+print("v1 =", v1)
+print("v2 =", v2)
+print("Addition: v1 + v2 =", v1 + v2)
+print("Subtraction: v1 - v2 =", v1 - v2)
+print("Scalar multiplication: v1 * 2 =", v1 * 2)
+print("Dot product: v1 · v2 =", v1.dot(v2))
+print("Cross product: v1 × v2 =", v1.cross(v2))
+print("Magnitude of v1:", v1.magnitude())
+print("Normalized v1:", v1.normalize())
+print()
+
+# ---------------- Solver Tests ----------------
+print("-> Testing Solver integration")
+f = lambda x: x**2
+area = c.Solver.integrate(f, 0, 3, 1000)
+print("Integral of x^2 from 0 to 3 =", area)
+
+# Example: center of mass
+density = lambda x: x + 1
+numerator = c.Solver.integrate(lambda x: x*density(x), 0, 5, 1000)
+denominator = c.Solver.integrate(density, 0, 5, 1000)
+center_of_mass = numerator / denominator
+print("Center of mass from 0 to 5:", center_of_mass)
+print()
+
+# ---------------- Constants Tests ----------------
+print("-> Testing Constants")
+print("pi =", c.Constants.pi)
+print("e =", c.Constants.e)
+print("g =", c.Constants.g)
+print("c =", c.Constants.c)
+print("h =", c.Constants.h)
+print("k =", c.Constants.k)
+print()
+
+# ---------------- Physics / Robotics Examples ----------------
+print("-> Testing Physics/Robotics Examples")
+
+# Torque
+r = c.Vec3(0,2,0)
+F = c.Vec3(10,0,0)
+torque = r.cross(F)
+print("Torque vector:", torque)
+
+# Work
+force = c.Vec3(10,0,0)
+displacement = c.Vec3(5,0,0)
+work = force.dot(displacement)
+print("Work done:", work)
+
+# Angle between vectors
+v1 = c.Vec3(1,0,0)
+v2 = c.Vec3(1,1,0)
+cos_theta = v1.dot(v2) / (v1.magnitude() * v2.magnitude())
+angle = c.acos(cos_theta)
+print("Angle between v1 and v2 (rad):", angle)
+
+# Projectile distance
+g = c.Constants.g
+velocity = lambda t: 20 - g*t
+distance = c.Solver.integrate(velocity, 0, 2, 1000)
+print("Projectile distance (2s):", distance)
+
+# Electric field via cross product
+velocity_vec = c.Vec3(0,1,0)
+magnetic_field = c.Vec3(0,0,1)
+electric_field = velocity_vec.cross(magnetic_field)
+print("Electric field vector:", electric_field)
+
+print("\n✅ All tests completed successfully!")
+```
+
+⏫ This is the Main test code of all the features if calculus other examples given below may or may not work.
 
 ## 🧪 Examples
 
