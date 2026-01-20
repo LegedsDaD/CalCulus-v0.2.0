@@ -527,10 +527,8 @@ Higher steps = higher accuracy but slower computation
 The integration is implemented in C++ using Simpson’s Rule, which:
 Requires a fixed number of subdivisions
 Cannot infer the step count automatically
-This design ensures high performance and numerical stability.
-
-## 📖Project Wiki
-Click[here](https://github.com/LegedsDaD/CalCulus/wiki)
+This design ensures high performance and numerical .
+8
 ## ⭐Star
 Star the repo if you find this helpful for performing HIGH GRADE SCIENTIFIC CALCULATIONS.
 
