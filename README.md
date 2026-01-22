@@ -531,5 +531,3 @@ This design ensures high performance and numerical .
 8
 ## ⭐Star
 Star the repo if you find this helpful for performing HIGH GRADE SCIENTIFIC CALCULATIONS.
-
-tell me which sections to this 
