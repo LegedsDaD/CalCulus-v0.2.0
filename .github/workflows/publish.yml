@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      id-token: pypi-AgEIcHlwaS5vcmcCJDc2NTljODU1LTQ0NjgtNDFkZS1iM2YxLWJmMTZmOGIzMmVmMAACFFsxLFsiY2FsY3VsdXMtY3BwIl1dAAIsWzIsWyJiYWFiZGNiNC0wNjZmLTRjOTMtOGFiZi1jN2YwY2QwZjI3OGMiXV0AAAYg3njQXDiuqQbuTDEaZy7wCzCQFXMMlX_prG5MyJ5XDIU
+      id-token: write
       contents: read
 
     steps:
