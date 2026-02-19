@@ -11,9 +11,10 @@ ext = Extension(
 )
 
 setup(
-    name="calculus",
+    name="calculus-cpp",
     version="0.2.0",
     packages=["calculus"],
     ext_modules=[ext],
     zip_safe=False,
 )
+
