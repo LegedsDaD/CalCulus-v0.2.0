@@ -1,50 +1,40 @@
-name: Publish Python Package to PyPI
+name: Build and Publish calculus-cpp
 
 on:
   push:
-    branches:
-      - main
     tags:
       - "v*"
-  workflow_dispatch:
 
 permissions:
-  id-token: write
   contents: read
+  id-token: write
 
 jobs:
-  build-and-publish:
-    name: Build and publish package
+  build_wheels:
     runs-on: ubuntu-latest
 
     steps:
-
-      # Step 1: Checkout repository
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # Step 2: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # Step 3: Upgrade pip and install build tools
-      - name: Install build dependencies
+      - name: Install cibuildwheel
         run: |
           python -m pip install --upgrade pip
-          pip install build setuptools wheel
+          pip install cibuildwheel build
 
-      # Step 4: Build package automatically from repo
-      - name: Build package
+      - name: Build wheels
         run: |
-          python -m build
+          cibuildwheel --output-dir dist
+        env:
+          CIBW_BUILD: cp311-manylinux_x86_64
 
-      # Step 5: Show built files (for debugging)
-      - name: List dist files
-        run: |
-          ls -lh dist/
+      - name: Build source distribution
+        run: python -m build --sdist
 
-      # Step 6: Publish to PyPI using Trusted Publisher (NO TOKEN REQUIRED)
-      - name: Publish package to PyPI
+      - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
